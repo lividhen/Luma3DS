@@ -143,8 +143,54 @@ u32 waitCombo(void)
 
 static MyThread menuThread;
 static u8 ALIGN(8) menuThreadStack[0x1000];
-static u8 batteryLevel = 255;
-static u32 homeBtnPressed = 0;
+
+static float batteryPercentage;
+static float batteryVoltage;
+static u8 batteryTemperature;
+
+static Result menuUpdateMcuInfo(void)
+{
+    Result res = 0;
+    u8 data[4];
+
+    if (!isServiceUsable("mcu::HWC"))
+        return -1;
+
+    res = mcuHwcInit();
+    if (R_FAILED(res))
+        return res;
+
+    // Read single-byte mcu regs 0x0A to 0x0D directly
+    res = MCUHWC_ReadRegister(0xA, data, 4);
+
+    if (R_SUCCEEDED(res))
+    {
+        batteryTemperature = data[0];
+
+        // The battery percentage isn't very precise... its precision ranges from 0.09% to 0.14% approx
+        // Round to 0.1%
+        batteryPercentage = data[1] + data[2] / 256.0f;
+        batteryPercentage = (u32)((batteryPercentage + 0.05f) * 10.0f) / 10.0f;
+
+        // Round battery voltage to 0.01V
+        batteryVoltage = (5u * data[3]) / 256.0f;
+        batteryVoltage = (u32)((batteryVoltage + 0.005f) * 100.0f) / 100.0f;
+    }
+
+    // Read mcu fw version if not already done
+    if (mcuFwVersion == 0)
+    {
+        u8 minor = 0, major = 0;
+        MCUHWC_GetFwVerHigh(&major);
+        MCUHWC_GetFwVerLow(&minor);
+
+        // If it has failed, mcuFwVersion will be set to 0 again
+        mcuFwVersion = SYSTEM_VERSION(major - 0x10, minor, 0);
+    }
+
+    mcuHwcExit();
+    return res;
+}
 
 static inline u32 menuAdvanceCursor(u32 pos, u32 numItems, s32 displ)
 {
