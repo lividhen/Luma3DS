@@ -9,6 +9,9 @@ To use it, you will need a console capable of running homebrew software on the A
 
 Since v8.0, Luma3DS has its own in-game menu, triggerable by <kbd>L+Down+Select</kbd> (see the [release notes](https://github.com/LumaTeam/Luma3DS/releases/tag/v8.0)).
 
+This fork is nanquitas fork with the brightness control form DullPointer's fork.
+Wow, that was a mouthfull.
+
 #
 ### Compiling
 * Prerequisites
