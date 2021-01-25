@@ -18,10 +18,10 @@ This can load 3gx files, but it cannot be used with CTGP-7 as that requires a sp
     2. [makerom](https://github.com/jakcron/Project_CTR) in PATH
     3. [firmtool](https://github.com/TuxSH/firmtool)
     4. Up-to-date devkitARM+libctru
-1. Clone the repository with `git clone https://github.com/LumaTeam/Luma3DS.git`
+1. Clone the repository with `git clone https://github.com/lividhen/Luma3DS.git`
 2. Run `make`.
 
-    The produced `boot.firm` is meant to be copied to the root of your SD card for usage with Boot9Strap.
+    The produced `boot.firm` is meant to be copied to the root of your SD card for usage with Bootstrap. It has the ability to load .3gx files, but cannot be used with ctgp7 as that needs a specific boot.firm to reduce the likelihood that somebody will implement cheats into their build. (Reasonable, but sad.) 
 
 #
 ### Setup / Usage / Features
