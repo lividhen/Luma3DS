@@ -9,7 +9,7 @@ To use it, you will need a console capable of running homebrew software on the A
 
 Since v8.0, Luma3DS has its own in-game menu, triggerable by <kbd>L+Down+Select</kbd> (see the [release notes](https://github.com/LumaTeam/Luma3DS/releases/tag/v8.0)).
 
-This fork impliments the brightness tweaks from DullPointer'fork into Nanquita's 3gx-loader branch of their fork. Wow that was a mouthful 😂. 
+This fork impliments the brightness tweaks from DullPointer's fork into Nanquita's 3gx-loader branch of their fork. Wow that was a mouthful 😂. 
 This can load 3gx files, but it cannot be used with CTGP-7 as that requires a specific firm file to avoid cheating as much as possible. You can add the firm that works with CTGP-7 to the chain loader menu, and boot that when you want to play it. 
 #
 ### Compiling
