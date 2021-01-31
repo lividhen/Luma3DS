@@ -143,7 +143,7 @@ u32 waitCombo(void)
 
 static MyThread menuThread;
 static u8 ALIGN(8) menuThreadStack[0x1000];
-tatic u8 batteryLevel = 255;
+static u8 batteryLevel = 255;
 static u32 homeBtnPressed = 0;
 /*
 static float batteryPercentage;
@@ -190,9 +190,9 @@ static Result menuUpdateMcuInfo(void)
         mcuFwVersion = SYSTEM_VERSION(major - 0x10, minor, 0);
     }
 
-    mcuHwcExit();  */
+    mcuHwcExit();
     return res;
-}
+} */
 
 static inline u32 menuAdvanceCursor(u32 pos, u32 numItems, s32 displ)
 {
