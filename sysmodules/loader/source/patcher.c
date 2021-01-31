@@ -869,8 +869,8 @@ void patchCode(u64 progId, u16 progVer, u8 *code, u32 size, u32 textSize, u32 ro
         if(!patcherApplyCodeBpsPatch(progId, code, size)) goto error;
         if(!applyCodeIpsPatch(progId, code, size)) goto error;
 
-        if(((u32)((progId >> 0x20) & 0xFFFFFFEDULL) == 0x00040000)
-			progId == 0x0004003000008F02LL) \\USA Home Menu
+        if(((u32)((progId >> 0x20) & 0xFFFFFFEDULL) == 0x00040000) ||
+			progId == 0x0004003000008F02LL) //USA Home Menu
         {
             u8 mask,
                regionId,
